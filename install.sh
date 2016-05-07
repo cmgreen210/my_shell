@@ -15,8 +15,8 @@ fi
 
 if [ -f "$HOME/.bash_prompt" ]
 then
-    msg "Backing up $HOME/.bshrc...."
-    mv "$HOME/.bash_prompt" "$HOME/.bash_prompty_backup"
+    msg "Backing up $HOME/.bash_prompt...."
+    mv "$HOME/.bash_prompt" "$HOME/.bash_prompt_backup"
 fi
 
 cp -f "bashrc" "$HOME/.bashrc"
@@ -30,4 +30,4 @@ fi
 
 source "$HOME/.bashrc"
 
-msg "Installation complete!"
+msg "Installation complete!!"

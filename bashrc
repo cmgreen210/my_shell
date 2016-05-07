@@ -3,3 +3,7 @@
 
 HISTSIZE=5000
 HISTFILESIZE=10000
+
+if [ -f "$HOME/.bashrc_custom" ] ; then
+    source "$HOME/.bashrc_custom"
+fi

@@ -11,3 +11,6 @@ export CUDA_HOME=/usr/local/cuda
 if [ -f "$HOME/.bashrc_custom" ] ; then
     source "$HOME/.bashrc_custom"
 fi
+
+# Line continuation
+export PS2="continue-> "

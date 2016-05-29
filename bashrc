@@ -14,3 +14,6 @@ fi
 
 # Line continuation
 export PS2="continue-> "
+
+# Debugging
+export PS4='$0.$LINENO+ '

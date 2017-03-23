@@ -7,11 +7,12 @@ msg() {
     echo "$border"
 }
 
-if [ -f "$HOME/.bashrc" ] 
+PROFILE="bash_profile"
+if [ -f "$HOME/.$PROFILE" ] 
 then
-    BACKUP="$HOME/.bashrc_backup"
-    msg "Backing up bashrc to $BACKUP"
-    cp -f "$HOME/.bashrc" "$BACKUP"
+    BACKUP="$HOME/.${PROFILE}_backup"
+    msg "Backing up bash_profile to $BACKUP"
+    cp -f "$HOME/.$PROFILE" "$BACKUP"
 fi
 
 if [ -f "$HOME/.bash_prompt" ]
@@ -21,7 +22,7 @@ then
     cp -f "$HOME/.bash_prompt" "$BACKUP"
 fi
 
-cp -f "bashrc" "$HOME/.bashrc"
+cp -f "$PROFILE" "$HOME/.$PROFILE"
 
 if [ "$(ls -A sexy-bash-prompt)" ] ; then
     ( cd "sexy-bash-prompt" && make "install" )
@@ -30,6 +31,6 @@ else
     echo "Try: git clone --recursive git://github.com/cmgreen210/my_shell" 
 fi
 
-source "$HOME/.bashrc"
+source "$HOME/.$PROFILE"
 
 msg "Installation complete!!"

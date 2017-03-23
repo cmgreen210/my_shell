@@ -53,3 +53,36 @@ function glf() { git log --all --grep="$1"; }
 # Custom Aliases
 # -----------------
 alias l='ls'
+
+# -----------------
+# Custom Functions
+# -----------------
+
+function msg() {
+  echo "----------------------------------------------"
+  echo "$1"
+  echo
+}
+
+function pyactivate() {
+
+    VENV_DIR="$HOME/.venv"
+    if [ ! -d "$VENV_DIR" ]; then
+        msg "ERROR: No virtualenv directory found at $VENV_DIR!!!"
+        return 1
+    fi
+
+    PS3='Please select virtualenv to activate: '
+    select opt in $VENV_DIR/*;
+    do
+        if [[ "$REPLY" == stop ]]; then break; fi
+        if [[ "$opt" == "" ]]; then
+            echo "'$REPLY' is not a valid input"
+            echo
+            continue
+        fi
+        source "$opt/bin/activate"
+        break
+    done
+}
+

@@ -9,14 +9,16 @@ msg() {
 
 if [ -f "$HOME/.bashrc" ] 
 then
-    msg "Backing up $HOME/.bashrc...."
-    mv "$HOME/.bashrc" "$HOME/.bashrc_backup"
+    BACKUP="$HOME/.bashrc_backup"
+    msg "Backing up bashrc to $BACKUP"
+    cp -f "$HOME/.bashrc" "$BACKUP"
 fi
 
 if [ -f "$HOME/.bash_prompt" ]
 then
-    msg "Backing up $HOME/.bash_prompt...."
-    mv "$HOME/.bash_prompt" "$HOME/.bash_prompt_backup"
+    BACKUP="$HOME/.bash_prompt_backup"
+    msg "Backing up bash_prompt to $BACKUP"
+    cp -f "$HOME/.bash_prompt" "$BACKUP"
 fi
 
 cp -f "bashrc" "$HOME/.bashrc"

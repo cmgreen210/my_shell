@@ -47,3 +47,9 @@ alias gss='git status -s'
 # ----------------------
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
+
+
+# -----------------
+# Custom Aliases
+# -----------------
+alias l='ls'

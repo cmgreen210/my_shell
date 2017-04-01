@@ -52,7 +52,9 @@ function glf() { git log --all --grep="$1"; }
 # -----------------
 # Custom Aliases
 # -----------------
-alias l='ls'
+alias l="ls"
+alias wip="git commit -a -m WIP"
+alias squish="git status && git commit -a --amend -C HEAD"
 
 # -----------------
 # Custom Functions
@@ -85,4 +87,7 @@ function pyactivate() {
         break
     done
 }
+
+export PATH="$PATH:$HOME/phabricator/arcanist/bin"
+export EDITOR=vim
 

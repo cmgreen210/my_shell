@@ -91,3 +91,5 @@ function pyactivate() {
 export PATH="$PATH:$HOME/phabricator/arcanist/bin"
 export EDITOR=vim
 
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad

@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+STARTUP=
+if [ "$(uname)" == "Darwin" ]; then
+  STARTUP="$HOME/.bash_profile"
+else
+  STARTUP="$HOME/.bashrc"
+fi
+
 msg() {
     border="-------------------------------------------------"
     echo "$border"
@@ -7,12 +14,11 @@ msg() {
     echo "$border"
 }
 
-PROFILE="bash_profile"
-if [ -f "$HOME/.$PROFILE" ] 
+if [ -f "$STARTUP" ] 
 then
-    BACKUP="$HOME/.${PROFILE}_backup"
-    msg "Backing up bash_profile to $BACKUP"
-    cp -f "$HOME/.$PROFILE" "$BACKUP"
+    BACKUP="${STARTUP}_bak"
+    msg "Backing up bash startup to $BACKUP"
+    cp -f "$STARTUP" "$BACKUP"
 fi
 
 if [ -f "$HOME/.bash_prompt" ]
@@ -22,7 +28,8 @@ then
     cp -f "$HOME/.bash_prompt" "$BACKUP"
 fi
 
-cp -f "$PROFILE" "$HOME/.$PROFILE"
+PROFILE="bash_profile"
+cp -f "$PROFILE" "$STARTUP"
 
 if [ "$(ls -A sexy-bash-prompt)" ] ; then
     ( cd "sexy-bash-prompt" && make "install" )
@@ -31,6 +38,8 @@ else
     echo "Try: git clone --recursive git://github.com/cmgreen210/my_shell" 
 fi
 
-source "$HOME/.$PROFILE"
+echo "export GOPATH=~/go" >> $STARTUP
+
+source "$STARTUP"
 
 msg "Installation complete!!"

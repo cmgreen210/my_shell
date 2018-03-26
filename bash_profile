@@ -93,3 +93,6 @@ export EDITOR=vim
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+
+export JAVA_HOME=$(/usr/libexec/java_home -v '1.8*')
+

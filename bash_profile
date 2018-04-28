@@ -88,11 +88,15 @@ function pyactivate() {
     done
 }
 
-export PATH="$PATH:$HOME/phabricator/arcanist/bin"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH:$HOME/phabricator/arcanist/bin"
 export EDITOR=vim
-
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-
 export JAVA_HOME=$(/usr/libexec/java_home -v '1.8*')
+
+BASH_COMPLETION_DIR="/etc/bash-completion.d" 
+PANTS_BASH_COMPLETION="${BASH_COMPLETION_DIR}/pants-completion.bash"
+if [ -f "$PANTS_BASH_COMPLETION" ]; then
+  . "$PANTS_BASH_COMPLETION"
+fi
 
